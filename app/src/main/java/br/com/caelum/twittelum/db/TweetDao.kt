@@ -1,5 +1,6 @@
 package br.com.caelum.twittelum.db
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
@@ -11,5 +12,5 @@ interface TweetDao {
     fun salva(tweet: Tweet)
 
     @Query("select * from Tweet ")
-    fun busca(): List<Tweet>
+    fun busca(): LiveData<List<Tweet>>
 }
