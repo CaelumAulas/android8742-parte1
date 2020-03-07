@@ -15,13 +15,6 @@ class ListaTweetsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.lista_tweets_activity)
 
-        val database = TwittelumDatabase.getInstance(this)
-        val dao = database.getTweetDao()
-        val tweets = dao.busca()
-
-        listaTweets.adapter =
-            ArrayAdapter<Tweet>(this, android.R.layout.simple_list_item_1, tweets)
-
 
         btnNewTweet.setOnClickListener {
             val intencao = Intent(this, TweetActivity::class.java)
@@ -29,4 +22,15 @@ class ListaTweetsActivity : AppCompatActivity() {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+
+        val database = TwittelumDatabase.getInstance(this)
+        val dao = database.getTweetDao()
+        val tweets = dao.busca()
+
+        listaTweets.adapter =
+            ArrayAdapter<Tweet>(this, android.R.layout.simple_list_item_1, tweets)
+
+    }
 }
