@@ -5,6 +5,8 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import br.com.caelum.twittelum.db.TwittelumDatabase
+import br.com.caelum.twittelum.modelo.Tweet
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -23,8 +25,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when (item.itemId) {
         R.id.menuPublicarTweet -> {
-            val conteudo = tweetConteudo.text.toString()
-            Toast.makeText(this, conteudo, Toast.LENGTH_LONG).show()
+            publicaTweet()
             finish()
             true
         }
@@ -36,6 +37,21 @@ class MainActivity : AppCompatActivity() {
         else -> false
     }
 
+    private fun publicaTweet() {
+        val tweet = criaTweet()
+
+        val database = TwittelumDatabase.getInstance(this)
+        val tweetDao = database.getTweetDao()
+        tweetDao.salva(tweet)
+
+        Toast.makeText(this, "$tweet", Toast.LENGTH_LONG).show()
+    }
+
+    private fun criaTweet(): Tweet {
+        val conteudo = tweetConteudo.text.toString()
+
+        return Tweet(conteudo)
+    }
 
 }
 
