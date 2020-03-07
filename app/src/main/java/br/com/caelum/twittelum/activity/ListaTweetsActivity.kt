@@ -1,9 +1,10 @@
-package br.com.caelum.twittelum
+package br.com.caelum.twittelum.activity
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
+import br.com.caelum.twittelum.R
 import kotlinx.android.synthetic.main.lista_tweets_activity.*
 
 class ListaTweetsActivity : AppCompatActivity() {
@@ -27,7 +28,7 @@ class ListaTweetsActivity : AppCompatActivity() {
 
 
         btnNewTweet.setOnClickListener {
-            val intencao = Intent(this, MainActivity::class.java)
+            val intencao = Intent(this, TweetActivity::class.java)
             startActivity(intencao)
         }
     }

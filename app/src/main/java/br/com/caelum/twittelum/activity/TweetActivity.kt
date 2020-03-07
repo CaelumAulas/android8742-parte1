@@ -1,15 +1,16 @@
-package br.com.caelum.twittelum
+package br.com.caelum.twittelum.activity
 
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import br.com.caelum.twittelum.R
 import br.com.caelum.twittelum.db.TwittelumDatabase
 import br.com.caelum.twittelum.modelo.Tweet
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class TweetActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
