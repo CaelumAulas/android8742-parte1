@@ -55,10 +55,4 @@ class ListaTweetsActivity : AppCompatActivity() {
             .setNegativeButton(R.string.delete_tweet_negative, null)
             .show()
     }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        tweetViewModel
-    }
-
 }
