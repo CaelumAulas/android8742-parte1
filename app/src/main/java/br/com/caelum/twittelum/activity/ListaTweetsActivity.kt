@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import br.com.caelum.twittelum.R
+import br.com.caelum.twittelum.adapter.TweetAdapter
 import br.com.caelum.twittelum.db.TwittelumDatabase
 import br.com.caelum.twittelum.modelo.Tweet
 import br.com.caelum.twittelum.viewmodel.TweetViewModel
@@ -25,8 +26,7 @@ class ListaTweetsActivity : AppCompatActivity() {
         setContentView(R.layout.lista_tweets_activity)
 
         tweetViewModel.busca().observe(this, Observer { tweets ->
-            listaTweets.adapter =
-                ArrayAdapter<Tweet>(this, android.R.layout.simple_list_item_1, tweets)
+            listaTweets.adapter = TweetAdapter(tweets)
 
         })
 
