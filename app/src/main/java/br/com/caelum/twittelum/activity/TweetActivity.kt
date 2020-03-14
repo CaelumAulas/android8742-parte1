@@ -1,12 +1,12 @@
 package br.com.caelum.twittelum.activity
 
+import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.ImageView
@@ -38,13 +38,6 @@ class TweetActivity : AppCompatActivity() {
 
     }
 
-    override fun onResume() {
-        super.onResume()
-        if (localDaFoto != null) {
-            mostraFoto()
-        }
-    }
-
     private fun mostraFoto() {
         val bitmap = BitmapFactory.decodeFile(localDaFoto)
 
@@ -60,6 +53,11 @@ class TweetActivity : AppCompatActivity() {
         return true
     }
 
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 123 && resultCode == Activity.RESULT_OK) mostraFoto()
+    }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when (item.itemId) {
         R.id.menuPublicarTweet -> {
@@ -86,7 +84,7 @@ class TweetActivity : AppCompatActivity() {
         val local = defineLocal()
         vaiParaCamera.putExtra(MediaStore.EXTRA_OUTPUT, local)
 
-        startActivity(vaiParaCamera)
+        startActivityForResult(vaiParaCamera, 123)
     }
 
     private fun defineLocal(): Uri {
