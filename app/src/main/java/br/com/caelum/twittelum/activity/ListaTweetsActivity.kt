@@ -3,6 +3,7 @@ package br.com.caelum.twittelum.activity
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ArrayAdapter
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -30,10 +31,29 @@ class ListaTweetsActivity : AppCompatActivity() {
         })
 
 
+
+
+        listaTweets.setOnItemClickListener { _, _, position, _ ->
+            val tweet = listaTweets.getItemAtPosition(position) as Tweet
+            perguntaSeQuerDeletarTweet(tweet)
+        }
+
         btnNewTweet.setOnClickListener {
             val intencao = Intent(this, TweetActivity::class.java)
             startActivity(intencao)
         }
+    }
+
+    private fun perguntaSeQuerDeletarTweet(tweet: Tweet) {
+        AlertDialog.Builder(this)
+            .setIcon(R.drawable.ic_warning)
+            .setTitle(R.string.delete_tweet)
+            .setMessage(R.string.delete_tweet_message)
+            .setPositiveButton(R.string.delete_tweet_positive) { _, _ ->
+                tweetViewModel.deleta(tweet)
+            }
+            .setNegativeButton(R.string.delete_tweet_negative, null)
+            .show()
     }
 
     override fun onDestroy() {

@@ -3,4 +3,8 @@
     <string name="app_name">Twittelum</string>
     <string name="hint_tweet_form">What are you thinking?</string>
     <string name="publish_tweet_form">Publish</string>
+    <string name="delete_tweet">Warning</string>
+    <string name="delete_tweet_message">Do you really want to delete this tweet?</string>
+    <string name="delete_tweet_positive">Yes</string>
+    <string name="delete_tweet_negative">No</string>
 </resources>

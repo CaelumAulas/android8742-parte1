@@ -8,4 +8,6 @@ class TweetRepository(val dao: TweetDao) {
     fun salva(tweet: Tweet) = dao.salva(tweet)
 
     fun busca() = dao.busca()
+
+    fun deleta(tweet: Tweet) = dao.deleta(tweet)
 }

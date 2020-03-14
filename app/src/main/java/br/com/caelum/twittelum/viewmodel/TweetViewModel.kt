@@ -10,4 +10,6 @@ class TweetViewModel(private val repository: TweetRepository) : ViewModel() {
 
     fun busca() = repository.busca()
 
+    fun deleta(tweet: Tweet) = repository.deleta(tweet)
+
 }
