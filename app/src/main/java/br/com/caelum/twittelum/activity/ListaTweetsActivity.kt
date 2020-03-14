@@ -30,9 +30,6 @@ class ListaTweetsActivity : AppCompatActivity() {
 
         })
 
-
-
-
         listaTweets.setOnItemClickListener { _, _, position, _ ->
             val tweet = listaTweets.getItemAtPosition(position) as Tweet
             perguntaSeQuerDeletarTweet(tweet)

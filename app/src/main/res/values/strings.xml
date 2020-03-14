@@ -6,4 +6,5 @@
     <string name="delete_tweet_message">Você realmente quer deletar esse tweet?</string>
     <string name="delete_tweet_positive">Sim</string>
     <string name="delete_tweet_negative">Não</string>
+    <string name="camera">Camera</string>
 </resources>

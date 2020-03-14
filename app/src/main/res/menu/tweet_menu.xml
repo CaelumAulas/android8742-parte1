@@ -3,8 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:id="@+id/menuCamera"
+        android:icon="@drawable/ic_camera"
+        android:title="@string/camera"
+        app:showAsAction="ifRoom" />
+
+    <item
         android:id="@+id/menuPublicarTweet"
         android:icon="@drawable/ic_save"
         android:title="@string/publish_tweet_form"
-        app:showAsAction="always"/>
+        app:showAsAction="always" />
 </menu>
+

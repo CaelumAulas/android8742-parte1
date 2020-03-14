@@ -1,6 +1,9 @@
 package br.com.caelum.twittelum.activity
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
@@ -39,6 +42,12 @@ class TweetActivity : AppCompatActivity() {
         R.id.menuPublicarTweet -> {
             publicaTweet()
             finish()
+            true
+        }
+
+        R.id.menuCamera -> {
+            val vaiParaCamera = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+            startActivity(vaiParaCamera)
             true
         }
 
