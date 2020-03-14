@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
 import androidx.lifecycle.ViewModelProvider
 import br.com.caelum.twittelum.R
+import br.com.caelum.twittelum.extensions.convertToBase64
 import br.com.caelum.twittelum.modelo.Tweet
 import br.com.caelum.twittelum.viewmodel.TweetViewModel
 import br.com.caelum.twittelum.viewmodel.ViewModelFactory
@@ -42,6 +43,10 @@ class TweetActivity : AppCompatActivity() {
         val bitmap = BitmapFactory.decodeFile(localDaFoto)
 
         val bitmapBonito = Bitmap.createScaledBitmap(bitmap, 500, 300, true)
+
+        val base64 = bitmapBonito.convertToBase64()
+
+        tweetFoto.tag = base64
 
         tweetFoto.setImageBitmap(bitmapBonito)
 
@@ -105,8 +110,8 @@ class TweetActivity : AppCompatActivity() {
 
     private fun criaTweet(): Tweet {
         val conteudo = tweetConteudo.text.toString()
-
-        return Tweet(conteudo)
+        val foto = tweetFoto.tag as String?
+        return Tweet(conteudo, foto)
     }
 
 }
